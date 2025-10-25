@@ -12,7 +12,7 @@ connectDB();
 app.use(cors({
     origin: function(origin, callback) {
         if (!origin) return callback(null, true);
-        if (origin.startsWith('http:
+        if (origin.startsWith('http://localhost:')) {
             return callback(null, true);
         }
         if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
@@ -50,8 +50,8 @@ app.use((req, res) => {
 });
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Ã°Å¸Å½Âµ Flux Music API server running on port ${PORT}`);
-    console.log(`Ã°Å¸Å’Â Environment: ${process.env.NODE_ENV}`);
-    console.log(`Ã°Å¸â€œÂ¡ Health check: http:
+    console.log(`🎵 Flux Music API server running on port ${PORT}`);
+    console.log(`🌐 Environment: ${process.env.NODE_ENV}`);
+    console.log(`📡 Health check: http://localhost:${PORT}/api/health`);
 });
 export default app;

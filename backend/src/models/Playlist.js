@@ -21,7 +21,7 @@ const playlistSchema = new mongoose.Schema({
     }],
     coverImage: {
         type: String,
-        default: 'https:
+        default: 'https://via.placeholder.com/300'
     },
     isPublic: {
         type: Boolean,

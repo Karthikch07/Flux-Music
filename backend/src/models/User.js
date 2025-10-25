@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     profileImage: {
         type: String,
-        default: 'https:
+        default: 'https://via.placeholder.com/150'
     }
 }, {
     timestamps: true
