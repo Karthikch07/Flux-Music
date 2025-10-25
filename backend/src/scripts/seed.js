@@ -1,0 +1,68 @@
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import Song from '../models/Song.js';
+
+// Load environment variables
+dotenv.config();
+
+// Sample songs data matching frontend assets
+const seedSongs = [
+    {
+        name: "Song One",
+        desc: "Put a smile on your face with these happy tunes",
+        album: "Album 1",
+        artist: "Artist 1",
+        image: "img1.jpg",
+        file: "song1.mp3",
+        duration: "3:00"
+    },
+    {
+        name: "Song Two",
+        desc: "Catch up on the most recent tracks",
+        album: "Album 2",
+        artist: "Artist 2",
+        image: "img2.jpg",
+        file: "song2.mp3",
+        duration: "2:20"
+    },
+    {
+        name: "Song Three",
+        desc: "Get ready for some amazing beats",
+        album: "Album 3",
+        artist: "Artist 3",
+        image: "img3.jpg",
+        file: "song3.mp3",
+        duration: "2:32"
+    }
+];
+
+const seedDatabase = async () => {
+    try {
+        // Connect to MongoDB
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('✅ MongoDB Connected for seeding');
+
+        // Clear existing songs
+        await Song.deleteMany({});
+        console.log('🗑️  Cleared existing songs');
+
+        // Insert seed data
+        const songs = await Song.insertMany(seedSongs);
+        console.log(`✅ Successfully seeded ${songs.length} songs:`);
+        songs.forEach((song, index) => {
+            console.log(`   ${index + 1}. ${song.name} - ${song.artist}`);
+        });
+
+        // Disconnect
+        await mongoose.disconnect();
+        console.log('✅ Database seeding completed successfully');
+        process.exit(0);
+
+    } catch (error) {
+        console.error('❌ Error seeding database:', error.message);
+        process.exit(1);
+    }
+};
+
+// Run the seed function
+seedDatabase();

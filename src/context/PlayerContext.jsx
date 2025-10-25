@@ -11,6 +11,8 @@ const PlayerContextProvider = (props) => {
 
     const [track, setTrack] = useState(songsData[0]);
     const [playStatus, setPlayStatus] = useState(false);
+    const [shuffle, setShuffle] = useState(false);
+    const [loop, setLoop] = useState(false);
     const [Time, setTime] = useState({
         currentTime: {
             second: 0,
@@ -50,6 +52,15 @@ const PlayerContextProvider = (props) => {
             setPlayStatus(true);
         }
     }
+    
+    const toggleShuffle = () => {
+        setShuffle(!shuffle);
+    }
+    
+    const toggleLoop = () => {
+        setLoop(!loop);
+    }
+    
     const seekSong = async(e) => {
         audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth)*audioRef.current.duration);
     }
@@ -84,7 +95,9 @@ const PlayerContextProvider = (props) => {
         play, pause,
         playWithId,
         previous, next,
-        seekSong
+        seekSong,
+        shuffle, toggleShuffle,
+        loop, toggleLoop
     };
     return (
         <PlayerContext.Provider value={contextValue}>
