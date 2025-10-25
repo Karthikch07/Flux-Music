@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const playlistSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -22,7 +21,7 @@ const playlistSchema = new mongoose.Schema({
     }],
     coverImage: {
         type: String,
-        default: 'https://via.placeholder.com/300'
+        default: 'https:
     },
     isPublic: {
         type: Boolean,
@@ -31,7 +30,5 @@ const playlistSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-
 const Playlist = mongoose.model('Playlist', playlistSchema);
-
 export default Playlist;

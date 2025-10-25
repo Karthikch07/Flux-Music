@@ -1,27 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        
         const result = await login(email, password);
-        
         setIsLoading(false);
-        
         if (result.success) {
             navigate('/');
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-black px-4">
             <div className="max-w-md w-full space-y-8 bg-black/50 p-8 rounded-2xl backdrop-blur-sm border border-gray-800">
@@ -29,7 +23,6 @@ const Login = () => {
                     <h2 className="text-4xl font-bold text-white mb-2">Welcome Back</h2>
                     <p className="text-gray-400">Login to continue to Flux Music</p>
                 </div>
-                
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4">
                         <div>
@@ -46,7 +39,6 @@ const Login = () => {
                                 placeholder="Enter your email"
                             />
                         </div>
-                        
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
                                 Password
@@ -62,7 +54,6 @@ const Login = () => {
                             />
                         </div>
                     </div>
-
                     <button
                         type="submit"
                         disabled={isLoading}
@@ -70,7 +61,6 @@ const Login = () => {
                     >
                         {isLoading ? 'Logging in...' : 'Login'}
                     </button>
-
                     <div className="text-center">
                         <p className="text-gray-400">
                             Don't have an account?{' '}
@@ -88,5 +78,4 @@ const Login = () => {
         </div>
     );
 };
-
 export default Login;

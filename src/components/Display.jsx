@@ -8,9 +8,7 @@ import Register from './Register'
 import Podcasts from './Podcasts'
 import MyPlaylists from './MyPlaylists'
 import { albumsData } from '../assets/assets'
-
 const Display = () => {
-
   const displayRef = useRef();
   const location = useLocation();
   const isAlbum = location.pathname.includes('album');
@@ -18,7 +16,6 @@ const Display = () => {
   const albumId = isAlbum ? location.pathname.slice(-1) : "";
   const albumData = albumsData[Number(albumId)];
   const bgColor = albumData?.bgColor || '#121212';
-
   useEffect(() => {
     if (isAuth) {
       displayRef.current.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
@@ -28,7 +25,6 @@ const Display = () => {
       displayRef.current.style.background = '#121212';
     }
   }, [isAlbum, isAuth, bgColor, albumData])
-
   return (
     <div ref={displayRef} className='w-[100%] m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w-[75%] lg:ml-0'>
         <Routes>
@@ -43,5 +39,4 @@ const Display = () => {
     </div>
   )
 }
-
 export default Display

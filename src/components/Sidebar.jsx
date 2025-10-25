@@ -3,7 +3,6 @@ import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { playlistAPI } from '../services/api';
-
 const Sidebar = () => {
     const navigate = useNavigate();
     const { isAuthenticated, showMessage } = useContext(AuthContext);
@@ -11,7 +10,6 @@ const Sidebar = () => {
     const [playlistName, setPlaylistName] = useState('');
     const [playlistDesc, setPlaylistDesc] = useState('');
     const [isCreating, setIsCreating] = useState(false);
-
     const handleCreatePlaylist = async () => {
         if (!isAuthenticated) {
             showMessage('Please login to create playlists', 'error');
@@ -20,11 +18,9 @@ const Sidebar = () => {
         }
         setShowCreateModal(true);
     };
-
     const handleSubmitPlaylist = async (e) => {
         e.preventDefault();
         setIsCreating(true);
-
         try {
             const response = await playlistAPI.create(playlistName, playlistDesc, '', true);
             console.log('Playlist created:', response);
@@ -40,13 +36,10 @@ const Sidebar = () => {
             setIsCreating(false);
         }
     };
-
     const handleBrowsePodcasts = () => {
         navigate('/podcasts');
     };
-
     const handleExpandLibrary = () => {
-        // Navigate to playlists page when arrow is clicked
         if (isAuthenticated) {
             navigate('/playlists');
         } else {
@@ -54,10 +47,9 @@ const Sidebar = () => {
             navigate('/login');
         }
     };
-
     return (
         <>
-        {/* Create Playlist Modal */}
+        {}
         {showCreateModal && (
             <div className='fixed inset-0 bg-black/80 flex items-center justify-center z-50'>
                 <div className='bg-gray-900 p-6 rounded-lg w-96 border border-gray-700'>
@@ -104,7 +96,6 @@ const Sidebar = () => {
                 </div>
             </div>
         )}
-
         <div className='w-[25%] h-full p-2 flex-col gap-2 text-white hidden lg:flex'>
             <div className='bg-[#121212] h-[15%] rounded flex flex-col justify-around'>
                 <div onClick={() => navigate('/')} className='flex items-center gap-3 pl-8 cursor-pointer'>
@@ -116,7 +107,6 @@ const Sidebar = () => {
                     <p className='font-bold'>Search</p>
                 </div>
             </div>
-
             <div className='bg-[#121212] h-[85%] rounded'>
                 <div className='p-4 flex items-center justify-between'>
                     <div className='flex items-center gap-3'>
@@ -140,19 +130,17 @@ const Sidebar = () => {
                         />
                     </div>
                 </div>
-
-                {/* View My Playlists Button */}
+                {}
                 {isAuthenticated && (
                     <div className='px-4 pb-2'>
                         <button 
                             onClick={() => navigate('/playlists')}
                             className='w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition font-semibold'
                         >
-                            📂 View My Playlists
+                            Ã°Å¸â€œâ€š View My Playlists
                         </button>
                     </div>
                 )}
-
                 <div className='p-4 bg-[#242424] m-2 rounded font-semibold flex flex-col items-start justify-start gap-1 pl-4'>
                     <h1>
                         Create Your First Playlist
@@ -176,5 +164,4 @@ const Sidebar = () => {
         </>
     )
 }
-
 export default Sidebar

@@ -1,13 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import { PlayerContext } from '../context/PlayerContext'
-
 const Player = () => {
-
     const {track,seekbar,seekBg,playStatus,play,pause,Time,previous,next,seekSong,shuffle,toggleShuffle,loop,toggleLoop,audioRef} = useContext(PlayerContext);
     const [volume, setVolume] = useState(1);
     const [isMuted, setIsMuted] = useState(false);
-
     const handleVolumeChange = (e) => {
         const newVolume = parseFloat(e.target.value);
         setVolume(newVolume);
@@ -19,7 +16,6 @@ const Player = () => {
             }
         }
     };
-
     const toggleMute = () => {
         if (audioRef.current) {
             const newMutedState = !audioRef.current.muted;
@@ -27,7 +23,6 @@ const Player = () => {
             setIsMuted(newMutedState);
         }
     };
-
     const handleFullScreen = () => {
         if (document.fullscreenElement) {
             document.exitFullscreen().catch(err => console.log('Exit fullscreen error:', err));
@@ -54,7 +49,6 @@ const Player = () => {
                 }
                     <img onClick={next} className='w-4 cursor-pointer' src={assets.next_icon} alt="" />
                     <img onClick={toggleLoop} className={`w-4 cursor-pointer ${loop ? 'opacity-100' : 'opacity-50'}`} src={assets.loop_icon} alt="" title={loop ? "Loop On" : "Loop Off"} />
-
                 </div>
                 <div className='flex items-center gap-5'>
                     <p>{Time.currentTime.minute}:{Time.currentTime.second}</p>
@@ -63,7 +57,6 @@ const Player = () => {
                     </div>
                     <p>{Time.totalTime.minute}:{Time.totalTime.second }</p>
                 </div>
-
             </div>
             <div className='hidden lg:flex items-center gap-2 opacity-75'>
                 <div className='relative'>
@@ -98,5 +91,4 @@ const Player = () => {
         </div>
     )
 }
-
 export default Player

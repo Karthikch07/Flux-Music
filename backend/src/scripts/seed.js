@@ -1,11 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import Song from '../models/Song.js';
-
-// Load environment variables
 dotenv.config();
-
-// Sample songs data matching frontend assets
 const seedSongs = [
     {
         name: "Song One",
@@ -35,34 +31,23 @@ const seedSongs = [
         duration: "2:32"
     }
 ];
-
 const seedDatabase = async () => {
     try {
-        // Connect to MongoDB
         await mongoose.connect(process.env.MONGODB_URI);
-        console.log('✅ MongoDB Connected for seeding');
-
-        // Clear existing songs
+        console.log('Ã¢Å“â€¦ MongoDB Connected for seeding');
         await Song.deleteMany({});
-        console.log('🗑️  Cleared existing songs');
-
-        // Insert seed data
+        console.log('Ã°Å¸â€”â€˜Ã¯Â¸Â  Cleared existing songs');
         const songs = await Song.insertMany(seedSongs);
-        console.log(`✅ Successfully seeded ${songs.length} songs:`);
+        console.log(`Ã¢Å“â€¦ Successfully seeded ${songs.length} songs:`);
         songs.forEach((song, index) => {
             console.log(`   ${index + 1}. ${song.name} - ${song.artist}`);
         });
-
-        // Disconnect
         await mongoose.disconnect();
-        console.log('✅ Database seeding completed successfully');
+        console.log('Ã¢Å“â€¦ Database seeding completed successfully');
         process.exit(0);
-
     } catch (error) {
-        console.error('❌ Error seeding database:', error.message);
+        console.error('Ã¢ÂÅ’ Error seeding database:', error.message);
         process.exit(1);
     }
 };
-
-// Run the seed function
 seedDatabase();

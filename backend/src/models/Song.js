@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const songSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -42,13 +41,9 @@ const songSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-
-// Method to increment play count
 songSchema.methods.incrementPlays = async function() {
     this.plays += 1;
     await this.save();
 };
-
 const Song = mongoose.model('Song', songSchema);
-
 export default Song;

@@ -3,13 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import { AuthContext } from '../context/AuthContext';
 import { playlistAPI } from '../services/api';
-
 const MyPlaylists = () => {
     const navigate = useNavigate();
     const { isAuthenticated, showMessage } = useContext(AuthContext);
     const [playlists, setPlaylists] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         if (!isAuthenticated) {
             showMessage('Please login to view your playlists', 'error');
@@ -18,7 +16,6 @@ const MyPlaylists = () => {
         }
         fetchPlaylists();
     }, [isAuthenticated]);
-
     const fetchPlaylists = async () => {
         try {
             setLoading(true);
@@ -30,21 +27,18 @@ const MyPlaylists = () => {
             setLoading(false);
         }
     };
-
     const handleDeletePlaylist = async (playlistId, playlistName) => {
         if (!window.confirm(`Are you sure you want to delete "${playlistName}"?`)) {
             return;
         }
-
         try {
             await playlistAPI.delete(playlistId);
             showMessage('Playlist deleted successfully', 'success');
-            fetchPlaylists(); // Refresh the list
+            fetchPlaylists(); 
         } catch (error) {
             showMessage(error.response?.data?.message || 'Failed to delete playlist', 'error');
         }
     };
-
     if (loading) {
         return (
             <>
@@ -55,7 +49,6 @@ const MyPlaylists = () => {
             </>
         );
     }
-
     return (
         <>
             <Navbar />
@@ -63,10 +56,9 @@ const MyPlaylists = () => {
                 <h1 className='text-3xl font-bold mb-2'>My Playlists</h1>
                 <p className='text-gray-400'>Your personal music collections</p>
             </div>
-
             {playlists.length === 0 ? (
                 <div className='flex flex-col items-center justify-center h-64 text-center'>
-                    <div className='text-6xl mb-4'>🎵</div>
+                    <div className='text-6xl mb-4'>Ã°Å¸Å½Âµ</div>
                     <h2 className='text-2xl font-bold mb-2'>No playlists yet</h2>
                     <p className='text-gray-400 mb-4'>Create your first playlist to get started</p>
                     <button
@@ -84,12 +76,11 @@ const MyPlaylists = () => {
                             className='bg-gray-900/50 rounded-lg p-4 hover:bg-gray-800/50 transition cursor-pointer group'
                         >
                             <div className='flex gap-4'>
-                                {/* Playlist Cover */}
+                                {}
                                 <div className='w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 text-4xl'>
-                                    🎵
+                                    Ã°Å¸Å½Âµ
                                 </div>
-
-                                {/* Playlist Info */}
+                                {}
                                 <div className='flex-1 min-w-0'>
                                     <h3 className='text-white font-bold text-lg mb-1 truncate'>
                                         {playlist.name}
@@ -101,15 +92,14 @@ const MyPlaylists = () => {
                                         <span className='text-purple-400'>
                                             {playlist.songs?.length || 0} songs
                                         </span>
-                                        <span className='text-gray-500'>•</span>
+                                        <span className='text-gray-500'>Ã¢â‚¬Â¢</span>
                                         <span className='text-gray-500'>
                                             {playlist.isPublic ? 'Public' : 'Private'}
                                         </span>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Action Buttons */}
+                            {}
                             <div className='flex gap-2 mt-4'>
                                 <button
                                     onClick={(e) => {
@@ -130,8 +120,7 @@ const MyPlaylists = () => {
                                     Delete
                                 </button>
                             </div>
-
-                            {/* Created Date */}
+                            {}
                             <div className='mt-2 text-xs text-gray-500'>
                                 Created {new Date(playlist.createdAt).toLocaleDateString()}
                             </div>
@@ -139,11 +128,10 @@ const MyPlaylists = () => {
                     ))}
                 </div>
             )}
-
-            {/* Stats Summary */}
+            {}
             {playlists.length > 0 && (
                 <div className='mt-8 bg-purple-900/20 border border-purple-500/30 rounded-lg p-6'>
-                    <h3 className='text-xl font-bold text-purple-400 mb-2'>📊 Your Stats</h3>
+                    <h3 className='text-xl font-bold text-purple-400 mb-2'>Ã°Å¸â€œÅ  Your Stats</h3>
                     <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
                         <div>
                             <div className='text-3xl font-bold text-white'>{playlists.length}</div>
@@ -173,5 +161,4 @@ const MyPlaylists = () => {
         </>
     );
 };
-
 export default MyPlaylists;

@@ -42,7 +42,6 @@ import img16 from './img16.jpg'
 import song1 from  './song1.mp3'
 import song2 from  './song2.mp3'
 import song3 from  './song3.mp3'
-
 export const assets = {
     bell_icon,
     home_icon,
@@ -70,7 +69,6 @@ export const assets = {
     flux_logo,
     clock_icon
 }
-
 export const albumsData = [
     {   
         id:0,
@@ -115,7 +113,6 @@ export const albumsData = [
         bgColor:"#744210"
     }
 ]
-
 export const songsData = [
     {
         id:0,

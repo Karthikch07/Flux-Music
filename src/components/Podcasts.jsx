@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from './Navbar';
-
 const Podcasts = () => {
     const podcastCategories = [
         { name: 'Technology', count: 125, color: 'bg-blue-500' },
@@ -12,7 +11,6 @@ const Podcasts = () => {
         { name: 'News & Politics', count: 92, color: 'bg-orange-500' },
         { name: 'Sports', count: 81, color: 'bg-indigo-500' },
     ];
-
     const featuredPodcasts = [
         { 
             title: 'Tech Talk Daily', 
@@ -39,7 +37,6 @@ const Podcasts = () => {
             description: 'Stand-up comedy and hilarious stories'
         },
     ];
-
     return (
         <>
             <Navbar />
@@ -47,8 +44,7 @@ const Podcasts = () => {
                 <h1 className='text-3xl font-bold mb-2'>Browse Podcasts</h1>
                 <p className='text-gray-400'>Discover amazing podcasts across different categories</p>
             </div>
-
-            {/* Categories */}
+            {}
             <div className='mb-8'>
                 <h2 className='text-2xl font-bold mb-4'>Categories</h2>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
@@ -63,8 +59,7 @@ const Podcasts = () => {
                     ))}
                 </div>
             </div>
-
-            {/* Featured Podcasts */}
+            {}
             <div className='mb-8'>
                 <h2 className='text-2xl font-bold mb-4'>Featured Podcasts</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -75,7 +70,7 @@ const Podcasts = () => {
                         >
                             <div className='flex gap-4'>
                                 <div className='w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0'>
-                                    <span className='text-4xl'>🎙️</span>
+                                    <span className='text-4xl'>Ã°Å¸Å½â„¢Ã¯Â¸Â</span>
                                 </div>
                                 <div className='flex-1'>
                                     <h3 className='text-white font-bold text-lg mb-1'>{podcast.title}</h3>
@@ -88,10 +83,9 @@ const Podcasts = () => {
                     ))}
                 </div>
             </div>
-
-            {/* Coming Soon Note */}
+            {}
             <div className='bg-purple-900/20 border border-purple-500/30 rounded-lg p-6 text-center'>
-                <h3 className='text-xl font-bold text-purple-400 mb-2'>🎧 Podcast Player Coming Soon!</h3>
+                <h3 className='text-xl font-bold text-purple-400 mb-2'>Ã°Å¸Å½Â§ Podcast Player Coming Soon!</h3>
                 <p className='text-gray-400'>
                     We're working on bringing you a full podcast listening experience. 
                     Stay tuned for updates!
@@ -100,5 +94,4 @@ const Podcasts = () => {
         </>
     );
 };
-
 export default Podcasts;

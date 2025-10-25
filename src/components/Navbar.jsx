@@ -2,31 +2,23 @@ import React, { useState, useContext } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
-
 const Navbar = () => {
-
   const navigate = useNavigate();
   const { user, isAuthenticated, logout, showMessage } = useContext(AuthContext);
   const [showUserMenu, setShowUserMenu] = useState(false);
-
   const handlePremium = () => {
     if (!isAuthenticated) {
       showMessage('Please login to access Premium features', 'info');
       navigate('/login');
       return;
     }
-    // Show premium upgrade page/modal
-    showMessage('🎵 Premium: Ad-free listening, offline downloads, and high-quality audio!', 'success');
-    // In a real app, you'd navigate to a premium subscription page
-    // navigate('/premium');
+    showMessage('Ã°Å¸Å½Âµ Premium: Ad-free listening, offline downloads, and high-quality audio!', 'success');
   };
-
   const handleLogout = () => {
     logout();
     setShowUserMenu(false);
     navigate('/');
   };
-
   return (
     <>
     <div className='w-full flex justify-between items-center font-semibold'>
@@ -36,7 +28,6 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-4'>
             <p onClick={handlePremium} className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer hover:scale-105 transition'>Explore Premium</p>
-            
             {isAuthenticated ? (
               <div className='relative'>
                 <div 
@@ -45,7 +36,6 @@ const Navbar = () => {
                 >
                   {user?.username?.charAt(0).toUpperCase() || 'U'}
                 </div>
-                
                 {showUserMenu && (
                   <div className='absolute right-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-xl border border-gray-700 py-2 z-50'>
                     <div className='px-4 py-2 border-b border-gray-700'>
@@ -89,10 +79,8 @@ const Navbar = () => {
             <p onClick={() => navigate('/')} className='bg-white text-black px-4 py-1 rounded-2xl cursor-pointer hover:scale-105 transition'> All</p>
             <p onClick={() => navigate('/')} className='bg-black px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition'> Music</p>
             <p onClick={() => navigate('/podcasts')} className='bg-black px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition'> Podcasts</p>
-
         </div>
     </>
   )
 }
-
 export default Navbar

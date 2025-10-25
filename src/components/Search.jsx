@@ -3,16 +3,13 @@ import Navbar from './Navbar'
 import { albumsData, songsData } from '../assets/assets'
 import AlbumItem from './AlbumItem'
 import SongItem from './SongItem'
-
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredAlbums, setFilteredAlbums] = useState(albumsData);
     const [filteredSongs, setFilteredSongs] = useState(songsData);
-
     const handleSearch = (e) => {
         const value = e.target.value.toLowerCase();
         setSearchTerm(value);
-
         if (value === '') {
             setFilteredAlbums(albumsData);
             setFilteredSongs(songsData);
@@ -29,7 +26,6 @@ const Search = () => {
             setFilteredSongs(songs);
         }
     };
-
     return (
         <>
             <Navbar />
@@ -43,7 +39,6 @@ const Search = () => {
                         className='w-[80%] md:w-[60%] px-6 py-3 rounded-full bg-[#242424] text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-purple-500'
                     />
                 </div>
-
                 {searchTerm && (
                     <div>
                         {filteredAlbums.length > 0 && (
@@ -56,7 +51,6 @@ const Search = () => {
                                 </div>
                             </div>
                         )}
-
                         {filteredSongs.length > 0 && (
                             <div className='mb-8'>
                                 <h2 className='text-2xl font-bold mb-4'>Songs</h2>
@@ -67,7 +61,6 @@ const Search = () => {
                                 </div>
                             </div>
                         )}
-
                         {filteredAlbums.length === 0 && filteredSongs.length === 0 && (
                             <div className='text-center text-gray-400 mt-16'>
                                 <p className='text-xl'>No results found for "{searchTerm}"</p>
@@ -76,7 +69,6 @@ const Search = () => {
                         )}
                     </div>
                 )}
-
                 {!searchTerm && (
                     <div className='text-center text-gray-400 mt-16'>
                         <p className='text-xl'>Start typing to search for music</p>
@@ -86,5 +78,4 @@ const Search = () => {
         </>
     )
 }
-
 export default Search

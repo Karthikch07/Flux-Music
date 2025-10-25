@@ -1,31 +1,24 @@
 import { createContext, useState, useEffect } from "react";
 import { authAPI } from "../services/api";
-
 export const AuthContext = createContext();
-
 const AuthContextProvider = (props) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
     const [authMessage, setAuthMessage] = useState(null);
-
-    // Check if user is logged in on mount
     useEffect(() => {
         const token = localStorage.getItem('token');
         const savedUser = localStorage.getItem('user');
-        
         if (token && savedUser) {
             setUser(JSON.parse(savedUser));
             setIsAuthenticated(true);
         }
         setLoading(false);
     }, []);
-
     const showMessage = (message, type = 'info') => {
         setAuthMessage({ message, type });
         setTimeout(() => setAuthMessage(null), 3000);
     };
-
     const register = async (username, email, password) => {
         try {
             console.log('Attempting registration...', { username, email });
@@ -42,7 +35,6 @@ const AuthContextProvider = (props) => {
             return { success: false, error: message };
         }
     };
-
     const login = async (email, password) => {
         try {
             console.log('Attempting login...', { email });
@@ -59,14 +51,12 @@ const AuthContextProvider = (props) => {
             return { success: false, error: message };
         }
     };
-
     const logout = () => {
         authAPI.logout();
         setUser(null);
         setIsAuthenticated(false);
         showMessage('Logged out successfully', 'success');
     };
-
     const contextValue = {
         user,
         isAuthenticated,
@@ -77,12 +67,10 @@ const AuthContextProvider = (props) => {
         logout,
         showMessage
     };
-
     return (
         <AuthContext.Provider value={contextValue}>
             {props.children}
         </AuthContext.Provider>
     );
 };
-
 export default AuthContextProvider;

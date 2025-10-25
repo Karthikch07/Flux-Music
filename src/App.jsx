@@ -5,16 +5,14 @@ import Display from './components/Display'
 import { PlayerContext } from './context/PlayerContext'
 import { AuthContext } from './context/AuthContext'
 import { useLocation } from 'react-router-dom'
-
 const App = () => {
   const {audioRef,track} = useContext(PlayerContext);
   const { authMessage } = useContext(AuthContext);
   const location = useLocation();
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
-
   return (
     <div className='h-screen bg-black'>
-      {/* Auth notification */}
+      {}
       {authMessage && (
         <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in ${
           authMessage.type === 'success' ? 'bg-green-600' : 
@@ -23,7 +21,6 @@ const App = () => {
           {authMessage.message}
         </div>
       )}
-
       <div className='h-[90%] flex'>
         {!isAuthPage && <Sidebar />}
         <Display />
@@ -33,5 +30,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App

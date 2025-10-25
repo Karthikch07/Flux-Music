@@ -3,9 +3,7 @@ import Navbar from './Navbar'
 import { useParams } from 'react-router-dom';
 import { albumsData, assets, songsData } from '../assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
-
 const DisplayAlbum = () => {
-
     const { id } = useParams();
     const albumData = albumsData[id];
     const { playWithId } = useContext(PlayerContext);
@@ -24,10 +22,9 @@ const DisplayAlbum = () => {
                     </p>
                     <p className='mt-1'>
                         132,456 likes
-                        • <b>50 songs,</b>
+                        Ã¢â‚¬Â¢ <b>50 songs,</b>
                         about 2 hr 42 min
                     </p>
-
                 </div>
             </div>
             <div className='grid grid-cols-3 sm:grid-cols-4 mt-10 mb-4 pl-2 text-[#a7a7a7] '>
@@ -35,7 +32,6 @@ const DisplayAlbum = () => {
                 <p>Album</p>
                 <p className='hidden sm:block'>Date Added</p>
                 <img className='m-auto w-4' src={assets.clock_icon} alt="" />
-
             </div>
             <hr />
             {
@@ -55,5 +51,4 @@ const DisplayAlbum = () => {
         </>
     )
 }
-
-export default DisplayAlbum 
+export default DisplayAlbum
