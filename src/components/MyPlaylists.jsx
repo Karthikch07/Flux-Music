@@ -58,7 +58,7 @@ const MyPlaylists = () => {
             </div>
             {playlists.length === 0 ? (
                 <div className='flex flex-col items-center justify-center h-64 text-center'>
-                    <div className='text-6xl mb-4'>Ã°Å¸Å½Âµ</div>
+                    <div className='text-6xl mb-4'>🎵</div>
                     <h2 className='text-2xl font-bold mb-2'>No playlists yet</h2>
                     <p className='text-gray-400 mb-4'>Create your first playlist to get started</p>
                     <button
@@ -78,7 +78,7 @@ const MyPlaylists = () => {
                             <div className='flex gap-4'>
                                 {}
                                 <div className='w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 text-4xl'>
-                                    Ã°Å¸Å½Âµ
+                                    🎵
                                 </div>
                                 {}
                                 <div className='flex-1 min-w-0'>
@@ -92,7 +92,7 @@ const MyPlaylists = () => {
                                         <span className='text-purple-400'>
                                             {playlist.songs?.length || 0} songs
                                         </span>
-                                        <span className='text-gray-500'>Ã¢â‚¬Â¢</span>
+                                        <span className='text-gray-500'>•</span>
                                         <span className='text-gray-500'>
                                             {playlist.isPublic ? 'Public' : 'Private'}
                                         </span>
@@ -131,7 +131,7 @@ const MyPlaylists = () => {
             {}
             {playlists.length > 0 && (
                 <div className='mt-8 bg-purple-900/20 border border-purple-500/30 rounded-lg p-6'>
-                    <h3 className='text-xl font-bold text-purple-400 mb-2'>Ã°Å¸â€œÅ  Your Stats</h3>
+                    <h3 className='text-xl font-bold text-purple-400 mb-2'>📊 Your Stats</h3>
                     <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
                         <div>
                             <div className='text-3xl font-bold text-white'>{playlists.length}</div>

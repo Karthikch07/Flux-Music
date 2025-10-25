@@ -12,7 +12,7 @@ const Navbar = () => {
       navigate('/login');
       return;
     }
-    showMessage('Ã°Å¸Å½Âµ Premium: Ad-free listening, offline downloads, and high-quality audio!', 'success');
+    showMessage('🎵 Premium: Ad-free listening, offline downloads, and high-quality audio!', 'success');
   };
   const handleLogout = () => {
     logout();

@@ -137,7 +137,7 @@ const Sidebar = () => {
                             onClick={() => navigate('/playlists')}
                             className='w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition font-semibold'
                         >
-                            Ã°Å¸â€œâ€š View My Playlists
+                            📂 View My Playlists
                         </button>
                     </div>
                 )}

@@ -34,19 +34,19 @@ const seedSongs = [
 const seedDatabase = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI);
-        console.log('Ã¢Å“â€¦ MongoDB Connected for seeding');
+        console.log('✅ MongoDB Connected for seeding');
         await Song.deleteMany({});
-        console.log('Ã°Å¸â€”â€˜Ã¯Â¸Â  Cleared existing songs');
+        console.log('🗑️  Cleared existing songs');
         const songs = await Song.insertMany(seedSongs);
-        console.log(`Ã¢Å“â€¦ Successfully seeded ${songs.length} songs:`);
+        console.log(`✅ Successfully seeded ${songs.length} songs:`);
         songs.forEach((song, index) => {
             console.log(`   ${index + 1}. ${song.name} - ${song.artist}`);
         });
         await mongoose.disconnect();
-        console.log('Ã¢Å“â€¦ Database seeding completed successfully');
+        console.log('✅ Database seeding completed successfully');
         process.exit(0);
     } catch (error) {
-        console.error('Ã¢ÂÅ’ Error seeding database:', error.message);
+        console.error('❌ Error seeding database:', error.message);
         process.exit(1);
     }
 };

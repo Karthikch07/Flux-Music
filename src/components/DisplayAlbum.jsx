@@ -22,7 +22,7 @@ const DisplayAlbum = () => {
                     </p>
                     <p className='mt-1'>
                         132,456 likes
-                        Ã¢â‚¬Â¢ <b>50 songs,</b>
+                        • <b>50 songs,</b>
                         about 2 hr 42 min
                     </p>
                 </div>
