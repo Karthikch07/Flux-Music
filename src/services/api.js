@@ -54,6 +54,30 @@ export const authAPI = {
         }
         return response.data;
     },
+    googleAuth: async (email, name) => {
+        const response = await api.post('/auth/google', { email, name });
+        if (response.data.data.token) {
+            localStorage.setItem('token', response.data.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.data.user));
+        }
+        return response.data;
+    },
+    cleverAuth: async (email, name, school) => {
+        const response = await api.post('/auth/clever', { email, name, school });
+        if (response.data.data.token) {
+            localStorage.setItem('token', response.data.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.data.user));
+        }
+        return response.data;
+    },
+    officeAuth: async (email, name) => {
+        const response = await api.post('/auth/office365', { email, name });
+        if (response.data.data.token) {
+            localStorage.setItem('token', response.data.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.data.user));
+        }
+        return response.data;
+    },
     logout: () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -95,6 +119,20 @@ export const playlistAPI = {
     removeSong: async (playlistId, songId) => {
         const response = await api.delete(`/playlists/${playlistId}/songs/${songId}`);
         return response.data;
+    },
+    removeDuplicates: async (playlistId) => {
+        const response = await api.post(`/playlists/${playlistId}/remove-duplicates`);
+        return response.data;
+    }
+};
+export const albumAPI = {
+    getAll: async () => {
+        const response = await api.get('/albums');
+        return response.data;
+    },
+    getById: async (id) => {
+        const response = await api.get(`/albums/${id}`);
+        return response.data;
     }
 };
 export const songAPI = {
@@ -104,6 +142,18 @@ export const songAPI = {
     },
     getById: async (id) => {
         const response = await api.get(`/songs/${id}`);
+        return response.data;
+    },
+    create: async (songData) => {
+        const response = await api.post('/songs', songData);
+        return response.data;
+    },
+    removeDuplicates: async () => {
+        const response = await api.post('/songs/remove-duplicates');
+        return response.data;
+    },
+    delete: async (id) => {
+        const response = await api.delete(`/songs/${id}`);
         return response.data;
     },
     search: async (query) => {

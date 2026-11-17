@@ -39,6 +39,17 @@ const MyPlaylists = () => {
             showMessage(error.response?.data?.message || 'Failed to delete playlist', 'error');
         }
     };
+
+    const handleDedupePlaylist = async (e, playlistId) => {
+        e.stopPropagation();
+        try {
+            const res = await playlistAPI.removeDuplicates(playlistId);
+            showMessage(res.message, res.duplicatesRemoved > 0 ? 'success' : 'info');
+            fetchPlaylists();
+        } catch (error) {
+            showMessage(error.response?.data?.message || 'Failed to clean duplicates', 'error');
+        }
+    };
     if (loading) {
         return (
             <>
@@ -106,16 +117,23 @@ const MyPlaylists = () => {
                                         e.stopPropagation();
                                         navigate(`/playlist/${playlist._id}`);
                                     }}
-                                    className='flex-1 bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition text-sm'
+                                    className='flex-1 bg-purple-600 text-white py-1.5 px-3 rounded hover:bg-purple-700 transition text-sm font-medium'
                                 >
                                     Open
+                                </button>
+                                <button
+                                    onClick={(e) => handleDedupePlaylist(e, playlist._id)}
+                                    className='bg-gray-800 hover:bg-gray-700 text-gray-300 py-1.5 px-3 rounded text-xs border border-gray-700 transition'
+                                    title='Remove duplicates from this playlist'
+                                >
+                                    🧹 Clean
                                 </button>
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         handleDeletePlaylist(playlist._id, playlist.name);
                                     }}
-                                    className='bg-red-600/20 text-red-400 py-2 px-4 rounded hover:bg-red-600/30 transition text-sm'
+                                    className='bg-red-600/20 text-red-400 py-1.5 px-3 rounded hover:bg-red-600/30 transition text-sm'
                                 >
                                     Delete
                                 </button>

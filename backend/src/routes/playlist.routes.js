@@ -6,18 +6,26 @@ import {
     updatePlaylist,
     deletePlaylist,
     addSongToPlaylist,
-    removeSongFromPlaylist
+    removeSongFromPlaylist,
+    removePlaylistDuplicates
 } from '../controllers/playlist.controller.js';
 import { protect } from '../middleware/auth.js';
+
 const router = express.Router();
+
 router.use(protect);
+
 router.route('/')
     .get(getPlaylists)
     .post(createPlaylist);
+
 router.route('/:id')
     .get(getPlaylistById)
     .put(updatePlaylist)
     .delete(deletePlaylist);
+
 router.post('/:id/songs', addSongToPlaylist);
 router.delete('/:id/songs/:songId', removeSongFromPlaylist);
+router.post('/:id/remove-duplicates', removePlaylistDuplicates);
+
 export default router;

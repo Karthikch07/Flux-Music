@@ -67,7 +67,26 @@ export const assets = {
     arrow_right,
     spotify_logo,
     flux_logo,
-    clock_icon
+    clock_icon,
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+    img11,
+    img12,
+    img13,
+    img14,
+    img15,
+    img16,
+    song1,
+    song2,
+    song3
 }
 export const albumsData = [
     {   
@@ -100,7 +119,7 @@ export const albumsData = [
     },
     {   
         id:4,
-        name: "Mega Hits,",
+        name: "Mega Hits",
         image: img11,
         desc:"Your weekly update of the most played tracks",
         bgColor:"#234e52"
@@ -113,6 +132,76 @@ export const albumsData = [
         bgColor:"#744210"
     }
 ]
+
+export const imageMap = {
+    'img1': img1, 'img1.jpg': img1,
+    'img2': img2, 'img2.jpg': img2,
+    'img3': img3, 'img3.jpg': img3,
+    'img4': img4, 'img4.jpg': img4,
+    'img5': img5, 'img5.jpg': img5,
+    'img6': img6, 'img6.jpg': img6,
+    'img7': img7, 'img7.jpg': img7,
+    'img8': img8, 'img8.jpg': img8,
+    'img9': img9, 'img9.jpg': img9,
+    'img10': img10, 'img10.jpg': img10,
+    'img11': img11, 'img11.jpg': img11,
+    'img12': img12, 'img12.jpg': img12,
+    'img13': img13, 'img13.jpg': img13,
+    'img14': img14, 'img14.jpg': img14,
+    'img15': img15, 'img15.jpg': img15,
+    'img16': img16, 'img16.jpg': img16
+};
+
+export const songAudioMap = {
+    'song1': song1, 'song1.mp3': song1,
+    'song2': song2, 'song2.mp3': song2,
+    'song3': song3, 'song3.mp3': song3
+};
+
+export const resolveSongImage = (img) => {
+    if (!img) return img1;
+    if (typeof img === 'string') {
+        const basename = img.split('/').pop().split('\\').pop();
+        if (imageMap[basename]) return imageMap[basename];
+        if (imageMap[img]) return imageMap[img];
+    }
+    return img;
+};
+
+export const resolveSongAudio = (file) => {
+    if (!file) return song1;
+    if (typeof file === 'string') {
+        const basename = file.split('/').pop().split('\\').pop();
+        if (songAudioMap[basename]) return songAudioMap[basename];
+        if (songAudioMap[file]) return songAudioMap[file];
+    }
+    return file;
+};
+
+export const availableArtworkList = [
+    { label: 'Cover 1 (Acoustic Sunrise)', value: 'img1.jpg', src: img1 },
+    { label: 'Cover 2 (Sunset Chill)', value: 'img2.jpg', src: img2 },
+    { label: 'Cover 3 (Neon Dusk)', value: 'img3.jpg', src: img3 },
+    { label: 'Cover 4 (Ocean Deep)', value: 'img4.jpg', src: img4 },
+    { label: 'Cover 5 (Morning Glow)', value: 'img5.jpg', src: img5 },
+    { label: 'Cover 6 (Electric Sky)', value: 'img6.jpg', src: img6 },
+    { label: 'Cover 7 (Forest Trail)', value: 'img7.jpg', src: img7 },
+    { label: 'Cover 8 (Global Top)', value: 'img8.jpg', src: img8 },
+    { label: 'Cover 9 (India Top)', value: 'img9.jpg', src: img9 },
+    { label: 'Cover 10 (Trending Flame)', value: 'img10.jpg', src: img10 },
+    { label: 'Cover 11 (Mega Hits)', value: 'img11.jpg', src: img11 },
+    { label: 'Cover 12 (Urban Beats)', value: 'img12.jpg', src: img12 },
+    { label: 'Cover 13 (Cosmic Reverie)', value: 'img13.jpg', src: img13 },
+    { label: 'Cover 14 (Moonlight Night)', value: 'img14.jpg', src: img14 },
+    { label: 'Cover 15 (Happy Acoustic)', value: 'img15.jpg', src: img15 },
+    { label: 'Cover 16 (Deep Purple Wave)', value: 'img16.jpg', src: img16 }
+];
+
+export const availableAudioTracks = [
+    { label: 'Audio Track 1 (Gentle Melodic)', value: 'song1.mp3', file: song1, duration: '3:00' },
+    { label: 'Audio Track 2 (Upbeat Groove)', value: 'song2.mp3', file: song2, duration: '2:20' },
+    { label: 'Audio Track 3 (Ambient Synth)', value: 'song3.mp3', file: song3, duration: '2:32' }
+];
 export const songsData = [
     {
         id:0,

@@ -8,7 +8,9 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/scripts/seed.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dedupe": "node src/scripts/deduplicate.js",
+    "build": "node -e \"console.log('Backend built successfully')\"",
+    "test": "node test-api.js"
   },
   "keywords": [
     "music",

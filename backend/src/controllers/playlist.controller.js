@@ -229,3 +229,56 @@ export const removeSongFromPlaylist = async (req, res) => {
         });
     }
 };
+
+export const removePlaylistDuplicates = async (req, res) => {
+    try {
+        const playlist = await Playlist.findById(req.params.id);
+        if (!playlist) {
+            return res.status(404).json({
+                status: 'error',
+                message: 'Playlist not found'
+            });
+        }
+        if (playlist.user.toString() !== req.user._id.toString()) {
+            return res.status(403).json({
+                status: 'error',
+                message: 'You can only manage your own playlists'
+            });
+        }
+
+        const seen = new Set();
+        const uniqueSongs = [];
+        let duplicatesCount = 0;
+
+        for (const songId of playlist.songs) {
+            const idStr = songId.toString();
+            if (seen.has(idStr)) {
+                duplicatesCount++;
+            } else {
+                seen.add(idStr);
+                uniqueSongs.push(songId);
+            }
+        }
+
+        playlist.songs = uniqueSongs;
+        await playlist.save();
+        const updatedPlaylist = await Playlist.findById(playlist._id).populate('songs');
+
+        res.status(200).json({
+            status: 'success',
+            message: duplicatesCount > 0 
+                ? `Removed ${duplicatesCount} duplicate song(s) from playlist` 
+                : 'No duplicate songs found in playlist',
+            duplicatesRemoved: duplicatesCount,
+            data: {
+                playlist: updatedPlaylist
+            }
+        });
+    } catch (error) {
+        console.error('Remove playlist duplicates error:', error.message);
+        res.status(500).json({
+            status: 'error',
+            message: error.message
+        });
+    }
+};
