@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Sidebar from './components/Sidebar'
 import Player from './components/Player'
 import Display from './components/Display'
+import MobileBottomNav from './components/MobileBottomNav'
 import { PlayerContext } from './context/PlayerContext'
 import { AuthContext } from './context/AuthContext'
 import { useLocation } from 'react-router-dom'
@@ -24,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div className='h-screen bg-black'>
+    <div className='h-screen w-full bg-black flex flex-col overflow-hidden'>
       {authMessage && (
         <div className={`fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in ${
           authMessage.type === 'success' ? 'bg-green-600' : 
@@ -33,11 +34,12 @@ const App = () => {
           {authMessage.message}
         </div>
       )}
-      <div className={`${isAuthPage ? 'h-full w-full' : 'h-[90%] flex'}`}>
+      <div className={`${isAuthPage ? 'h-full w-full' : 'flex-1 min-h-0 flex overflow-hidden'}`}>
         {!isAuthPage && <Sidebar />}
         <Display />
       </div>
       {!isAuthPage && <Player />}
+      {!isAuthPage && <MobileBottomNav />}
       <audio 
         ref={audioRef} 
         src={track?.file} 

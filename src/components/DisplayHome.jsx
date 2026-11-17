@@ -66,24 +66,24 @@ const DisplayHome = () => {
                         {isLoadingSongs ? 'Syncing with MongoDB...' : `${songs.length} active songs in your stream catalog`}
                     </p>
                 </div>
-                <div className='flex items-center gap-3'>
+                <div className='flex items-center gap-2 sm:gap-3 flex-wrap'>
                     <button
                         onClick={() => navigate('/premium')}
-                        className='bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 hover:from-amber-300 hover:to-orange-400 text-black font-extrabold px-4 py-2 rounded-full text-sm flex items-center gap-1.5 transition hover:scale-105 shadow-lg shadow-orange-950/40'
+                        className='bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 hover:from-amber-300 hover:to-orange-400 text-black font-extrabold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-1.5 transition hover:scale-105 shadow-lg shadow-orange-950/40'
                     >
-                        <Crown className='w-4 h-4 fill-black' />
+                        <Crown className='w-3.5 h-3.5 sm:w-4 sm:h-4 fill-black' />
                         <span>Explore Premium</span>
                     </button>
                     <button
                         onClick={() => setIsAddSongOpen(true)}
-                        className='bg-purple-600 hover:bg-purple-500 text-white font-medium px-4 py-2 rounded-full text-sm flex items-center gap-2 transition hover:scale-105 shadow-lg shadow-purple-900/30'
+                        className='bg-purple-600 hover:bg-purple-500 text-white font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-1.5 transition hover:scale-105 shadow-lg shadow-purple-900/30'
                     >
                         <span>➕</span> Add Song
                     </button>
                     <button
                         onClick={handleRemoveDuplicates}
                         disabled={isDeduplicating}
-                        className='bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white font-medium px-4 py-2 rounded-full text-sm flex items-center gap-2 transition hover:scale-105 disabled:opacity-50'
+                        className='bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-1.5 transition hover:scale-105 disabled:opacity-50'
                         title='Scan and remove duplicate songs from the library'
                     >
                         <span>🧹</span> {isDeduplicating ? 'Cleaning...' : 'Remove Duplicates'}

@@ -21,31 +21,33 @@ const Navbar = () => {
 
   return (
     <>
-    <div className='w-full flex justify-between items-center font-semibold'>
-        <div className='flex items-center gap-2'>
-            <img onClick={() => navigate(-1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer hover:scale-110 transition' src={assets.arrow_left} alt="" />
-            <img onClick={() => navigate(1)} className='w-8 bg-black p-2 rounded-2xl cursor-pointer hover:scale-110 transition' src={assets.arrow_right} alt="" />
+    <div className='w-full flex justify-between items-center font-semibold gap-2'>
+        <div className='flex items-center gap-1.5 sm:gap-2 shrink-0'>
+            <img onClick={() => navigate(-1)} className='w-7 sm:w-8 bg-black p-1.5 sm:p-2 rounded-2xl cursor-pointer hover:scale-110 transition' src={assets.arrow_left} alt="Back" />
+            <img onClick={() => navigate(1)} className='w-7 sm:w-8 bg-black p-1.5 sm:p-2 rounded-2xl cursor-pointer hover:scale-110 transition' src={assets.arrow_right} alt="Forward" />
         </div>
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-2 sm:gap-4'>
             {user?.isPremium ? (
               <div 
                 onClick={handlePremium} 
-                className='bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 text-black text-xs font-black px-3.5 py-1.5 rounded-full hidden md:flex items-center gap-1.5 cursor-pointer hover:scale-105 transition shadow-lg shadow-orange-500/25'
+                className='bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 text-black text-[10px] sm:text-xs font-black px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full flex items-center gap-1 cursor-pointer hover:scale-105 transition shadow-lg shadow-orange-500/25 shrink-0'
               >
-                <Crown className='w-3.5 h-3.5 fill-black' />
-                <span>PREMIUM PASS</span>
+                <Crown className='w-3 h-3 sm:w-3.5 sm:h-3.5 fill-black' />
+                <span className='hidden xs:inline'>PREMIUM PASS</span>
+                <span className='xs:hidden'>VIP</span>
               </div>
             ) : (
-              <p onClick={handlePremium} className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:flex items-center gap-1.5 cursor-pointer hover:scale-105 transition'>
-                <Sparkles className='w-3.5 h-3.5 text-purple-600' />
-                <span>Explore Premium</span>
+              <p onClick={handlePremium} className='bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[11px] sm:text-[14px] px-2.5 sm:px-4 py-1 rounded-full flex items-center gap-1 cursor-pointer hover:scale-105 transition font-bold shadow-md shadow-purple-900/40 shrink-0'>
+                <Sparkles className='w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300' />
+                <span className='hidden xs:inline'>Explore Premium</span>
+                <span className='xs:hidden'>Premium</span>
               </p>
             )}
             {isAuthenticated ? (
               <div className='relative'>
                 <div 
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className='bg-purple-500 text-white px-3 py-1 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition min-w-[32px] h-8 relative'
+                  className='bg-purple-500 text-white px-2.5 sm:px-3 py-1 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition min-w-[30px] sm:min-w-[32px] h-7 sm:h-8 relative text-xs sm:text-sm font-bold'
                 >
                   {user?.username?.charAt(0).toUpperCase() || 'U'}
                   {user?.isPremium && (
@@ -90,16 +92,16 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-1.5 sm:gap-2'>
                 <button 
                   onClick={() => navigate('/login')}
-                  className='bg-white text-black px-4 py-1 rounded-2xl text-[15px] cursor-pointer hover:scale-105 transition'
+                  className='bg-white text-black px-2.5 sm:px-4 py-1 rounded-full text-xs sm:text-[15px] cursor-pointer hover:scale-105 transition font-semibold'
                 >
                   Login
                 </button>
                 <button 
                   onClick={() => navigate('/register')}
-                  className='bg-purple-500 text-white px-4 py-1 rounded-2xl text-[15px] cursor-pointer hover:scale-105 transition'
+                  className='bg-purple-500 text-white px-2.5 sm:px-4 py-1 rounded-full text-xs sm:text-[15px] cursor-pointer hover:scale-105 transition font-semibold'
                 >
                   Sign Up
                 </button>
@@ -107,10 +109,11 @@ const Navbar = () => {
             )}
         </div>
         </div>
-        <div className='flex items-center gap-2 mt-4'>
-            <p onClick={() => navigate('/')} className='bg-white text-black px-4 py-1 rounded-2xl cursor-pointer hover:scale-105 transition'> All</p>
-            <p onClick={() => navigate('/')} className='bg-black px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition'> Music</p>
-            <p onClick={() => navigate('/podcasts')} className='bg-black px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition'> Podcasts</p>
+        <div className='flex items-center gap-2 mt-3 sm:mt-4 overflow-x-auto pb-1 text-xs sm:text-sm font-semibold'>
+            <p onClick={() => navigate('/')} className='bg-white text-black px-3 sm:px-4 py-1 rounded-2xl cursor-pointer hover:scale-105 transition shrink-0'> All</p>
+            <p onClick={() => navigate('/')} className='bg-[#222222] hover:bg-[#333333] px-3 sm:px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition shrink-0'> Music</p>
+            <p onClick={() => navigate('/podcasts')} className='bg-[#222222] hover:bg-[#333333] px-3 sm:px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition shrink-0'> Podcasts</p>
+            <p onClick={() => navigate('/playlists')} className='bg-[#222222] hover:bg-[#333333] px-3 sm:px-4 py-1 rounded-2xl text-white cursor-pointer hover:scale-105 transition shrink-0 lg:hidden'> Playlists</p>
         </div>
     </>
   )

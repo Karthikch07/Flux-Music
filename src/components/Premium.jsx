@@ -232,25 +232,25 @@ const Premium = () => {
       <Navbar />
 
       {/* Hero Banner Header */}
-      <div className='relative mt-4 rounded-3xl overflow-hidden border border-purple-500/20 bg-gradient-to-b from-[#1c142c] via-[#120f1d] to-[#0c0a13] p-8 md:p-12 shadow-2xl'>
+      <div className='relative mt-3 sm:mt-4 rounded-2xl sm:rounded-3xl overflow-hidden border border-purple-500/20 bg-gradient-to-b from-[#1c142c] via-[#120f1d] to-[#0c0a13] p-5 sm:p-8 md:p-12 shadow-2xl'>
         {/* Ambient Atmospheric Bloom */}
         <div className='absolute -top-24 -left-24 w-96 h-96 rounded-full bg-purple-600/20 blur-3xl pointer-events-none' />
         <div className='absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-cyan-600/15 blur-3xl pointer-events-none' />
 
         <div className='relative z-10 max-w-3xl'>
-          <div className='inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300 text-xs font-bold tracking-wide uppercase mb-4'>
+          <div className='inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-400/30 text-purple-300 text-xs font-bold tracking-wide uppercase mb-3 sm:mb-4'>
             <Crown className='w-4 h-4 text-amber-400 animate-pulse' />
             <span>Flux Premium Pass • 1 Month Free</span>
           </div>
 
-          <h1 className='text-3xl md:text-5xl font-black tracking-tight text-white mb-3'>
+          <h1 className='text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-white mb-2.5 sm:mb-3 leading-tight'>
             Listen Without Limits. <br />
             <span className='bg-gradient-to-r from-purple-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent'>
               Pure Studio Hi-Fi Audio.
             </span>
           </h1>
 
-          <p className='text-gray-300 text-sm md:text-base leading-relaxed mb-6 max-w-2xl'>
+          <p className='text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed mb-5 sm:mb-6 max-w-2xl'>
             Stream in 24-bit Lossless FLAC, isolate vocals with the AI Stem Studio, download unlimited tracks for offline flights, and enjoy 100% ad-free listening across all your devices.
           </p>
 
@@ -798,8 +798,8 @@ const Premium = () => {
           CHECKOUT & SUBSCRIPTION MODAL
       ========================================================================= */}
       {showCheckoutModal && (
-        <div className='fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-4'>
-          <div className='w-full max-w-md rounded-3xl p-6 sm:p-7 shadow-2xl relative border bg-[#14101e] border-[#2e2642] text-white'>
+        <div className='fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4'>
+          <div className='w-full max-w-md rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-2xl relative border bg-[#14101e] border-[#2e2642] text-white max-h-[92vh] overflow-y-auto'>
             <button
               onClick={() => setShowCheckoutModal(false)}
               className='absolute right-4 top-4 text-gray-400 hover:text-white'

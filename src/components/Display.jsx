@@ -33,10 +33,10 @@ const Display = () => {
   return (
     <div 
       ref={displayRef} 
-      className={`text-white transition-colors duration-500 overflow-auto ${
+      className={`text-white transition-colors duration-500 overflow-y-auto overflow-x-hidden flex-1 min-h-0 ${
         isAuth 
           ? 'w-full h-full m-0 p-0 rounded-none bg-transparent' 
-          : 'w-[100%] lg:w-[75%] lg:ml-0 m-2 px-6 pt-4 rounded bg-[#121212]'
+          : 'w-full lg:w-[75%] lg:ml-0 m-1 sm:m-2 px-3 sm:px-6 pt-3 sm:pt-4 rounded-xl bg-[#121212]'
       }`}
     >
         <Routes>

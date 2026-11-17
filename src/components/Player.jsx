@@ -94,11 +94,11 @@ const Player = () => {
   };
 
   return (
-    <div className='h-[10%] bg-[#0f0f0f] border-t border-[#222222] flex justify-between items-center text-white px-4 select-none relative z-40'>
-      {/* Left: Track Artwork & Info */}
-      <div className='hidden lg:flex items-center gap-3.5 min-w-[220px]'>
+    <div className='h-[68px] sm:h-[10%] bg-[#0f0f0f]/98 backdrop-blur-md border-t border-[#222222] flex justify-between items-center text-white px-2.5 sm:px-4 select-none relative z-40 shrink-0'>
+      {/* Left: Track Artwork & Info (Responsive on mobile & desktop) */}
+      <div className='flex items-center gap-2 sm:gap-3.5 max-w-[125px] sm:max-w-[190px] lg:min-w-[220px] shrink-0'>
         <img
-          className='w-12 h-12 object-cover rounded-md shadow-md border border-[#2a2a2a]'
+          className='w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md shadow-md border border-[#2a2a2a] shrink-0'
           src={track?.image || assets.img1}
           alt={track?.name || 'Track'}
           onError={(e) => {
@@ -106,20 +106,20 @@ const Player = () => {
             e.currentTarget.src = assets.img1;
           }}
         />
-        <div className='truncate max-w-[170px]'>
-          <div className='flex items-center gap-1.5'>
-            <p className='font-bold text-sm truncate text-white hover:underline cursor-pointer' onClick={() => navigate('/premium')}>
+        <div className='truncate min-w-0 flex-1'>
+          <div className='flex items-center gap-1 sm:gap-1.5'>
+            <p className='font-bold text-xs sm:text-sm truncate text-white hover:underline cursor-pointer' onClick={() => navigate('/premium')}>
               {track?.name || 'No Track Selected'}
             </p>
             <span
               onClick={() => navigate('/premium')}
-              className='cursor-pointer px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 hover:bg-purple-500/40 transition shrink-0'
+              className='cursor-pointer px-1 py-0.2 rounded text-[8px] sm:text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 hover:bg-purple-500/40 transition shrink-0 hidden xs:inline-block'
               title='Flux Premium Hi-Res Audio Engine - Click to explore'
             >
               FLAC
             </span>
           </div>
-          <p className='text-xs text-gray-400 truncate hover:text-gray-300 cursor-pointer'>
+          <p className='text-[10px] sm:text-xs text-gray-400 truncate hover:text-gray-300 cursor-pointer'>
             {track?.artist || track?.desc || 'Flux Music'}
           </p>
         </div>
@@ -128,19 +128,19 @@ const Player = () => {
       {/* Center: Controls & Seekbar */}
       <div className='flex flex-col items-center gap-1.5 m-auto'>
         {/* Buttons Row */}
-        <div className='flex items-center gap-6'>
+        <div className='flex items-center gap-2.5 sm:gap-6'>
           {/* Shuffle Button */}
           <button
             type='button'
             onClick={toggleShuffle}
-            className={`p-1 rounded-full transition-all cursor-pointer ${
+            className={`p-1 rounded-full transition-all cursor-pointer hidden sm:block ${
               shuffle
                 ? 'text-purple-400 scale-110 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]'
                 : 'text-gray-400 hover:text-white hover:scale-105'
             }`}
             title={shuffle ? 'Shuffle On' : 'Shuffle Off'}
           >
-            <Shuffle className='w-4 h-4' />
+            <Shuffle className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
           </button>
 
           {/* Previous Track Button */}
@@ -150,20 +150,20 @@ const Player = () => {
             className='p-1 rounded-full text-gray-300 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer'
             title='Previous Track'
           >
-            <SkipBack className='w-5 h-5 fill-current' />
+            <SkipBack className='w-4 h-4 sm:w-5 sm:h-5 fill-current' />
           </button>
 
           {/* Central Play/Pause Button - Guaranteed Visible High-Contrast Icon */}
           <button
             type='button'
             onClick={playStatus ? pause : play}
-            className='w-9 h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center cursor-pointer hover:scale-108 active:scale-95 transition-all duration-150 shadow-lg shadow-white/20'
+            className='w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-gray-200 text-black flex items-center justify-center cursor-pointer hover:scale-108 active:scale-95 transition-all duration-150 shadow-lg shadow-white/20'
             title={playStatus ? 'Pause (Space)' : 'Play (Space)'}
           >
             {playStatus ? (
-              <Pause className='w-4 h-4 fill-black text-black' />
+              <Pause className='w-3.5 h-3.5 sm:w-4 sm:h-4 fill-black text-black' />
             ) : (
-              <Play className='w-4 h-4 fill-black text-black ml-0.5' />
+              <Play className='w-3.5 h-3.5 sm:w-4 sm:h-4 fill-black text-black ml-0.5' />
             )}
           </button>
 
@@ -174,45 +174,45 @@ const Player = () => {
             className='p-1 rounded-full text-gray-300 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer'
             title='Next Track'
           >
-            <SkipForward className='w-5 h-5 fill-current' />
+            <SkipForward className='w-4 h-4 sm:w-5 sm:h-5 fill-current' />
           </button>
 
           {/* Loop Button */}
           <button
             type='button'
             onClick={toggleLoop}
-            className={`p-1 rounded-full transition-all cursor-pointer ${
+            className={`p-1 rounded-full transition-all cursor-pointer hidden sm:block ${
               loop
                 ? 'text-purple-400 scale-110 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]'
                 : 'text-gray-400 hover:text-white hover:scale-105'
             }`}
             title={loop ? 'Repeat On' : 'Repeat Off'}
           >
-            <Repeat className='w-4 h-4' />
+            <Repeat className='w-3.5 h-3.5 sm:w-4 sm:h-4' />
           </button>
         </div>
 
         {/* Seekbar & Timestamps */}
-        <div className='flex items-center gap-3 text-xs text-gray-400 font-mono'>
-          <span className='min-w-[32px] text-right'>{formatTime(Time.currentTime)}</span>
+        <div className='flex items-center gap-1.5 sm:gap-3 text-[10px] sm:text-xs text-gray-400 font-mono'>
+          <span className='min-w-[28px] sm:min-w-[32px] text-right'>{formatTime(Time.currentTime)}</span>
           <div
             ref={seekBg}
             onClick={seekSong}
-            className='w-[55vw] max-w-[500px] h-1.5 bg-[#2c2c2c] hover:h-2 rounded-full cursor-pointer transition-all relative group'
+            className='w-[36vw] sm:w-[50vw] max-w-[500px] h-1 sm:h-1.5 bg-[#2c2c2c] hover:h-2 rounded-full cursor-pointer transition-all relative group'
           >
             <div
               ref={seekbar}
               className='h-full w-0 bg-purple-500 rounded-full relative group-hover:bg-purple-400'
             >
-              <div className='hidden group-hover:block absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md' />
+              <div className='hidden group-hover:block absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-white rounded-full shadow-md' />
             </div>
           </div>
-          <span className='min-w-[32px]'>{formatTime(Time.totalTime)}</span>
+          <span className='min-w-[28px] sm:min-w-[32px]'>{formatTime(Time.totalTime)}</span>
         </div>
       </div>
 
       {/* Right: Volume & Fullscreen Controls */}
-      <div className='hidden lg:flex items-center gap-3.5 min-w-[220px] justify-end'>
+      <div className='hidden md:flex items-center gap-2.5 sm:gap-3.5 min-w-[130px] lg:min-w-[220px] justify-end shrink-0'>
         <button
           type='button'
           onClick={toggleMute}

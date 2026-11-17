@@ -401,17 +401,17 @@ const Login = ({ initialMode = "signin" }) => {
   };
 
   return (
-    <div className="h-screen max-h-screen w-full relative overflow-hidden flex flex-col justify-between select-none bg-[#050408] text-white">
+    <div className="h-screen max-h-screen w-full relative overflow-y-auto sm:overflow-hidden flex flex-col justify-between select-none bg-[#050408] text-white">
       {/* 60FPS Glowing Audio Visualizer Parallel to "Sign in to Flux Music" */}
       <AudioLineRibbonBeatVisualizer targetElementRef={submitButtonRef} />
 
       {/* Top Header Navigation Bar (Compact, sleek, zero scroll down) */}
-      <header className="w-full px-6 py-2.5 flex items-center justify-between relative z-20 shrink-0">
+      <header className="w-full px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between relative z-20 shrink-0">
         <div
           onClick={() => navigate('/')}
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-cyan-500 flex items-center justify-center p-0.5 shadow-md shadow-purple-900/50 group-hover:scale-105 transition-transform">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-cyan-500 flex items-center justify-center p-0.5 shadow-md shadow-purple-900/50 group-hover:scale-105 transition-transform">
             <img
               src={assets.flux_logo}
               alt="Flux Music"
@@ -419,7 +419,7 @@ const Login = ({ initialMode = "signin" }) => {
             />
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-purple-300 transition-colors">
+            <span className="text-lg sm:text-2xl font-black tracking-tight text-white group-hover:text-purple-300 transition-colors">
               fluxmusic
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -431,17 +431,17 @@ const Login = ({ initialMode = "signin" }) => {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="text-xs font-semibold px-3.5 py-1 rounded-full border border-[#2b273b] hover:border-purple-500 text-gray-300 hover:text-white bg-[#14121c]/90 backdrop-blur-md transition-all shadow-md flex items-center gap-1.5"
+            className="text-xs font-semibold px-3 sm:px-3.5 py-1 rounded-full border border-[#2b273b] hover:border-purple-500 text-gray-300 hover:text-white bg-[#14121c]/90 backdrop-blur-md transition-all shadow-md flex items-center gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5 text-purple-400" />
-            <span className="hidden sm:inline">Back to Studio</span>
+            <span className="hidden xs:inline">Back to Studio</span>
           </button>
         </div>
       </header>
 
       {/* Main Content: Enlarged GlowGrace Card (Brought upper, zero scroll down) */}
-      <main className="flex-1 w-full flex items-center justify-center px-4 py-0 relative z-10 min-h-0">
-        <div className="w-full max-w-[465px] sm:max-w-[480px] flux-login-card rounded-2xl transition-all duration-300 p-6 sm:p-7 shadow-2xl relative border bg-[#110e19]/92 backdrop-blur-2xl border-[#2a243a] shadow-purple-950/70 -translate-y-2 sm:-translate-y-4">
+      <main className="flex-1 w-full flex items-center justify-center px-3 sm:px-4 py-0 relative z-10 min-h-0">
+        <div className="w-full max-w-[465px] sm:max-w-[480px] flux-login-card rounded-2xl transition-all duration-300 p-4 sm:p-7 shadow-2xl relative border bg-[#110e19]/92 backdrop-blur-2xl border-[#2a243a] shadow-purple-950/70 -translate-y-1 sm:-translate-y-4">
           {/* Top Floating Badge with Glowing Music Icon */}
           <div className="absolute -top-5 left-1/2 -translate-x-1/2">
             <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 bg-gradient-to-tr from-purple-600 to-fuchsia-600 text-white ring-2 ring-[#050408] shadow-purple-900/80">
